@@ -1,7 +1,10 @@
 package com.example.getorientation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -75,4 +78,16 @@ public class MainActivity extends AppCompatActivity {
     private float radian2Degree(float radian) {
         return radian * 180 / (float) Math.PI;
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(listener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+            return;
+        }
 }
